@@ -1,45 +1,84 @@
 
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
+// import classes from './Counter.module.css';
+
+// const Counter = () => { //useSelector allows you to select specific pieces from your store
+//   const dispatch = useDispatch();//directly calls back to the store's action labels
+//   const counter = useSelector(state => state.counter); //state.counter being the defualt state that can be affected by dispatched actions
+//   const show = useSelector(state => state.showCounter);
+
+//   const incrementHandler = () => {
+//     dispatch({ type: 'INCREMENT'})//must match exactly as labeled in the store
+//   };
+
+//   const increaseHandler = () => {
+//     dispatch({ type: 'INCREASE', amount: 5})//property "amount" here needs to match with the propery labeled back in the store, as in, "action.amount"
+//   };
+
+//   const decrementHandler = () => {
+//     dispatch({ type: 'DECREMENT'})//must match exactly as it does in the store
+//   };
+
+//   const toggleCounterHandler = () => {
+//     dispatch({ type: 'TOGGLE'})
+//   };
+
+//   return (
+//     <main className={classes.counter}>
+//       <h1>Redux Counter</h1>
+//       {show && <div className={classes.value}>{counter}</div>}
+//       <div>
+//         <button onClick={incrementHandler}>Increment</button>
+//         <button onClick={increaseHandler}>Increase</button>
+//         <button onClick={decrementHandler}>Decrement</button>
+//       </div>
+//       <button onClick={toggleCounterHandler}>Toggle Counter</button>
+//     </main>
+//   );
+// };
+
+// export default Counter;
+
+import {useSelector, useDispatch } from 'react-redux';
 import classes from './Counter.module.css';
 
-const Counter = () => { //useSelector allows you to select specific pieces from your store
-  const dispatch = useDispatch();//directly calls back to the store's action labels
-  const counter = useSelector(state => state.counter); //state.counter being the defualt state that can be affected by dispatched actions
+const Counter = () => {
+  const dispatch = useDispatch();
+  const counter = useSelector(state => state.counter);
   const show = useSelector(state => state.showCounter);
 
   const incrementHandler = () => {
-    dispatch({ type: 'INCREMENT'})//must match exactly as labeled in the store
-  };
-
-  const increaseHandler = () => {
-    dispatch({ type: 'INCREASE', amount: 5})//property "amount" here needs to match with the propery labeled back in the store, as in, "action.amount"
-  };
+    dispatch({ type: 'INCREMENT'})
+  }
 
   const decrementHandler = () => {
-    dispatch({ type: 'DECREMENT'})//must match exactly as it does in the store
-  };
+    dispatch({ type: 'DECREMENT'})
+  }
+
+  const increaseHandler = () => {
+    dispatch({ type: 'INCREASE', amount: 5})
+  }
 
   const toggleCounterHandler = () => {
     dispatch({ type: 'TOGGLE'})
-  };
+  }
 
   return (
     <main className={classes.counter}>
-      <h1>Redux Counter</h1>
-      {show && <div className={classes.value}>{counter}</div>}
-      <div>
-        <button onClick={incrementHandler}>Increment</button>
-        <button onClick={increaseHandler}>Increase</button>
-        <button onClick={decrementHandler}>Decrement</button>
-      </div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
-    </main>
-  );
-};
+       <h1>Redux Counter</h1>
+       {show && <div className={classes.value}>{counter}</div>}
+       <div>
+         <button onClick={incrementHandler}>Increment</button>
+         <button onClick={increaseHandler}>Increase</button>
+         <button onClick={decrementHandler}>Decrement</button>
+       </div>
+       <button onClick={toggleCounterHandler}>Toggle Counter</button>
+     </main>
+  )
+}
 
 export default Counter;
-
 // class Counter extends Component {//setting up the same function as above as a class based component. 
 //   incrementHandler() {
 //     this.props.increment()//makes a call to the dispatcher

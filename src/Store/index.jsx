@@ -1,6 +1,6 @@
 //this file sets up our store of action dispatches to be provided to the rest of the app so as to dispatch acitons upon state change
 
-import { createStore } from 'redux';
+import { createStore } from 'redux';// need to import this so that this store will even do anything
 
 const initialState = { counter: 0, showCounter: true}
 
