@@ -3,11 +3,11 @@
 //import { createStore } from 'redux';// need to import this so that this store will even do anything
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-const initialState = { counter: 0, showCounter: true};
+const initialCounterState = { counter: 0, showCounter: true};
 
 const counterSlice = createSlice({//this is practically the same as the counterRedcuer function
     name: 'counter',
-    initialState: initialState,
+    initialState: initialCounterState,
     reducers: {//these are the 'INCREMENT', 'DECREMENT', 'INCREASE', 'TOGGLE' if checks below.
         increment(state) {//don't need 'action' bc we know that an action is not being changed or mutated. Only a state change
             state.counter++
@@ -23,6 +23,21 @@ const counterSlice = createSlice({//this is practically the same as the counterR
         },
     }
 });
+
+const initialAuthState = { isAuthed: false}
+
+const authSlice = createSlice({
+    name: 'auth',
+    initialState: initialAuthState,
+    reducers: {
+        login(state) {
+            state.isAuthed = true
+        },
+        logout(state) {
+            state.isAuthed = false
+        }
+    }
+})
 
 
 // const counterReducer = (state = initialState, action) => {//default state
@@ -56,9 +71,10 @@ const counterSlice = createSlice({//this is practically the same as the counterR
 //const store = createStore(counterRedcuer);//creates the store of all this data
 
 const store = configureStore({
-    reducer: counterSlice.reducer
+    reducer: { counter: counterSlice.reducer, auth: authSlice.reducer}
 });
 
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 export default store;

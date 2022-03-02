@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { counterActions } from '../Store';
 import classes from './Counter.module.css';
 
 const Counter = () => { //useSelector allows you to select specific pieces from your store
   const dispatch = useDispatch();//directly calls back to the store's action labels
-  const counter = useSelector(state => state.counter); //state.counter being the defualt state that can be affected by dispatched actions
-  const show = useSelector(state => state.showCounter);
+  const counter = useSelector(state => state.counter.counter); //state.counter being the defualt state that can be affected by dispatched actions
+  const show = useSelector(state => state.counter.showCounter);
 
   const incrementHandler = () => {
     dispatch(counterActions.increment())
