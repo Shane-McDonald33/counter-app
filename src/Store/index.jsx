@@ -1,6 +1,6 @@
 //this file sets up our store of action dispatches to be provided to the rest of the app so as to dispatch acitons upon state change
 
-//import { createStore } from 'redux';// need to import this so that this store will even do anything
+import { createStore } from 'redux';// need to import this so that this store will even do anything
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 const initialCounterState = { counter: 0, showCounter: true};
@@ -40,6 +40,16 @@ const authSlice = createSlice({
 })
 
 
+
+const store = configureStore({
+    reducer: { counter: counterSlice.reducer, auth: authSlice.reducer }
+});
+
+export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
+
+export default store;
+
 // const counterReducer = (state = initialState, action) => {//default state
 //     if (action.type === 'INCREMENT') {//action statement
 //         return {
@@ -69,12 +79,3 @@ const authSlice = createSlice({
 // }
 
 //const store = createStore(counterRedcuer);//creates the store of all this data
-
-const store = configureStore({
-    reducer: { counter: counterSlice.reducer, auth: authSlice.reducer}
-});
-
-export const counterActions = counterSlice.actions;
-export const authActions = authSlice.actions;
-
-export default store;

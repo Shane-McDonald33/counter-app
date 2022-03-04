@@ -43,6 +43,7 @@ const Counter = () => { //useSelector allows you to select specific pieces from 
 
 export default Counter;
 
+
 // class Counter extends Component {//setting up the same function as above as a class based component. 
 //   incrementHandler() {
 //     this.props.increment()//makes a call to the dispatcher
